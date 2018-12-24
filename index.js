@@ -14,6 +14,6 @@ app.use((req, res) => {
   res.end("hello world\n");
 });
 
-app.listen(8000);
+app.listen(80);
 
-https.createServer(options, app).listen(80);
+https.createServer(options, app).listen(443);
