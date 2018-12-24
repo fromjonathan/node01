@@ -1,10 +1,10 @@
-import express from 'express';
-import { createServer } from "https";
-import { readFileSync } from "fs";
+const express = require('express');
+const https = require("https");
+const fs = require("fs");
 
 const options = {
-  key: readFileSync("/etc/letsencrypt/live/fromjon.com/privkey.pem"),
-  cert: readFileSync("/etc/letsencrypt/live/fromjon.com/fullchain.pem")
+  key: fs.readFileSync("/etc/letsencrypt/live/fromjon.com/privkey.pem"),
+  cert: fs.readFileSync("/etc/letsencrypt/live/fromjon.com/fullchain.pem")
 };
 
 const app = express();
@@ -16,4 +16,4 @@ app.use((req, res) => {
 
 app.listen(3000);
 
-createServer(options, app).listen(3000);
+https.createServer(options, app).listen(3000);
